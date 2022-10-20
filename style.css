@@ -1,0 +1,18 @@
+body {
+	background-color: grey;
+}
+
+.center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.key {
+	color: #a70715;
+	font-family: 'Digital display';
+	font-size: 60px;
+	z-index: 2;
+}
