@@ -1,13 +1,22 @@
 body {
-	background-color: grey;
+	background-color: rgb(137, 137, 137);
+	margin: 0;
+	padding: 0;
 }
 
 .center {
 	position: absolute;
 	left: 50%;
-	top: 50%;
+	top: 60%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+}
+
+.inside {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 
 .key {
@@ -15,4 +24,19 @@ body {
 	font-family: 'Digital display';
 	font-size: 60px;
 	z-index: 2;
+}
+
+.keyPressed {
+	box-shadow: 0 0 20px #a70715;
+	border-radius: 50%;
+}
+
+.noSelect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

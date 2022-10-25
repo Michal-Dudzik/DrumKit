@@ -8,23 +8,58 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<div id="yamaha">
-			<a class="key" style="position: relative; top: 150px; left: 413px">A</a>
+		<div id="yamaha" class="center noSelect">
+			<audio src="./sounds/hihat.wav" id="s1"></audio>
+			<audio src="./sounds/kick.wav" id="s2"></audio>
+			<audio src="./sounds/openhat.wav" id="s3"></audio>
+			<audio src="./sounds/boom.wav" id="s4"></audio>
+			<audio src="./sounds/ride.wav" id="s5"></audio>
+			<audio src="./sounds/snare.wav" id="s6"></audio>
+			<audio src="./sounds/tom.wav" id="s7"></audio>
+			<audio src="./sounds/tink.wav" id="s8"></audio>
 
-			<a class="key" style="position: relative; top: 370px; left: 480px">S</a>
+			<img src="./images/yamaha_noButtons.png" />
 
-			<a class="key" style="position: relative; top: 630px; left: 560px">D</a>
+			<div
+				class="key"
+				style="
+					width: 200px;
+					height: 200px;
+					position: relative;
+					top: -787px;
+					left: 35px;
+				">
+				<img src="./images/drums/D1.png" />
+				<p
+					id="d1"
+					style="
+						position: relative;
+						top: -275px;
+						left: 0px;
+						height: 200px;
+						border-radius: 50%;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+					">
+					A
+				</p>
+			</div>
 
-			<a class="key" style="position: relative; top: 150px; left: -413px">H</a>
+			<a class="key" style="position: relative; top: -500px; left: 480px">S</a>
 
-			<a class="key" style="position: relative; top: 370px; right: 480px">J</a>
+			<a class="key" style="position: relative; top: -630px; left: 560px">D</a>
 
-			<a class="key" style="position: relative; top: 630px; right: 560px">K</a>
+			<a class="key" style="position: relative; top: -290px; left: 690px">F</a>
 
-			<img
-				src="./images/yamaha_noButtons.png"
-				class="center"
-				alt="background" />
+			<a class="key" style="position: relative; top: -290px; left: 980px">G</a>
+
+			<a class="key" style="position: relative; top: -150px; left: 1310px">H</a>
+
+			<a class="key" style="position: relative; top: -370px; left: 1190px">J</a>
+
+			<a class="key" style="position: relative; top: -630px; left: 1050px">K</a>
+
 			<audio id="clap" src="./sounds/clap.wav"></audio>
 		</div>
 
