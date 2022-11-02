@@ -64,8 +64,17 @@ function playSound(sound) {
 }
 // Date.now()
 
+function Play(x) {
+	document.querySelector(x).classList.add('keyPressed');
+	audio.play();
+}
+
+function Stop(x) {
+	document.querySelector(x).classList.remove('keyPressed');
+}
+
 document.getElementById('d1').addEventListener('mousedown', function () {
-	document.getElementById('d1').classList.add('keyPressed');
+	document.querySelector('d1').classList.add('keyPressed');
 	audio.play();
 });
 document.getElementById('d1').addEventListener('mouseup', function () {

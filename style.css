@@ -1,33 +1,54 @@
-body {
-	background-color: rgb(137, 137, 137);
-	margin: 0;
-	padding: 0;
+:root {
+	--background: #5c5c5c;
+	--drum: #a70715;
+	--triangle: #7d0b0b;
 }
 
-.center {
+body {
+	background-color: var(--background);
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#yamaha {
+	background-image: url(/images/yamaha_noButtons.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+}
+
+/* .center {
 	position: absolute;
 	left: 50%;
 	top: 60%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+} */
+
+.wholeDrum {
+	position: absolute;
+	display: flex;
+	width: max-content;
+	height: max-content;
 }
 
-.inside {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
+.wholeDrum a {
+	position: absolute;
+	top: 33%;
+	left: 45%;
 }
 
 .key {
-	color: #a70715;
+	color: var(--drum);
 	font-family: 'Digital display';
 	font-size: 60px;
-	z-index: 2;
 }
 
 .keyPressed {
-	box-shadow: 0 0 20px #a70715;
+	box-shadow: 0 0 20px var(--drum);
 	border-radius: 50%;
 }
 
@@ -39,4 +60,36 @@ body {
 	-ms-user-select: none; /* Internet Explorer/Edge */
 	user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+/* Cool triangles */
+.triangleLeft {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+	transform: rotate(90deg);
+}
+
+.triangleRight {
+	position: absolute;
+	top: 75%;
+	right: 50%;
+	width: 100%;
+	overflow: hidden;
+	line-height: 0;
+	transform: rotate(270deg);
+}
+
+.triangle svg {
+	position: relative;
+	display: block;
+	width: calc(110% + 1.3px);
+	height: 250px;
+}
+
+.triangle .shape-fill {
+	fill: var(--triangle);
 }

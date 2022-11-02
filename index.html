@@ -6,9 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>DrumKit</title>
 		<link rel="stylesheet" href="style.css" />
+		<script src="drumkit.js" defer></script>
 	</head>
 	<body>
-		<div id="yamaha" class="center noSelect">
+		<div id="yamaha" class="noSelect">
 			<audio src="./sounds/hihat.wav" id="s1"></audio>
 			<audio src="./sounds/kick.wav" id="s2"></audio>
 			<audio src="./sounds/openhat.wav" id="s3"></audio>
@@ -18,51 +19,58 @@
 			<audio src="./sounds/tom.wav" id="s7"></audio>
 			<audio src="./sounds/tink.wav" id="s8"></audio>
 
-			<img src="./images/yamaha_noButtons.png" />
-
-			<div
-				class="key"
-				style="
-					width: 200px;
-					height: 200px;
-					position: relative;
-					top: -787px;
-					left: 35px;
-				">
+			<div id="d1" class="wholeDrum" style="top: 10%; left: 17.5%;">
 				<img src="./images/drums/D1.png" />
-				<p
-					id="d1"
-					style="
-						position: relative;
-						top: -275px;
-						left: 0px;
-						height: 200px;
-						border-radius: 50%;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-					">
-					A
-				</p>
+				<a class="key">A</a>
 			</div>
 
-			<a class="key" style="position: relative; top: -500px; left: 480px">S</a>
+			<div id="d2" class="wholeDrum" style="top: 33.5%; left: 22.5%;">
+				<img src="./images/drums/D2.png" />
+				<a class="key">S</a>
+			</div>
 
-			<a class="key" style="position: relative; top: -630px; left: 560px">D</a>
+			<div id="d3" class="wholeDrum" style="top: 57.5%; left: 26.4%;">
+				<img src="./images/drums/D3.png" />
+				<a class="key">D</a>
+			</div>
 
-			<a class="key" style="position: relative; top: -290px; left: 690px">F</a>
+			<div id="d4" class="wholeDrum" style="top: 20.5%; left: 34.6%;">
+				<img src="./images/drums/D4.png" />
+				<a class="key">F</a>
+			</div>
 
-			<a class="key" style="position: relative; top: -290px; left: 980px">G</a>
+			<div id="d5" class="wholeDrum" style="top: 20.5%; left: 51vw;">
+				<img src="./images/drums/D5.png" />
+				<a class="key">G</a>
+			</div>
 
-			<a class="key" style="position: relative; top: -150px; left: 1310px">H</a>
+			<div id="d6" class="wholeDrum" style="top: 57.5%; left: 59.4%;">
+				<img src="./images/drums/D6.png" />
+				<a class="key">H</a>
+			</div>
 
-			<a class="key" style="position: relative; top: -370px; left: 1190px">J</a>
+			<div id="d7" class="wholeDrum" style="top: 33.5%; left: 67.5%;">
+				<img src="./images/drums/D7.png" />
+				<a class="key">J</a>
+			</div>
 
-			<a class="key" style="position: relative; top: -630px; left: 1050px">K</a>
+			<div id="d8" class="wholeDrum" style="top: 10%; left: 72.4%;">
+				<img src="./images/drums/D8.png" />
+				<a class="key">K</a>
+			</div>
 
-			<audio id="clap" src="./sounds/clap.wav"></audio>
-		</div>
+			<div class="triangle triangleLeft">
+    			<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        			<path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
+    			</svg>
+			</div>
 
-		<script src="drumkit.js"></script>
+			<div class="triangle triangleRight">
+    			<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        			<path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
+    			</svg>
+			</div>
+
+		
 	</body>
 </html>
