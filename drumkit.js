@@ -1,82 +1,115 @@
 document.addEventListener('keypress', onKeyPress);
 
-const KeyToSound = {
-	a: 'hihat',
-	s: 'kick',
-	d: 'openhat',
-	f: 'boom',
-	g: 'ride',
-	h: 'snare',
-	j: 'tom',
-	k: 'tink',
+const itsRecording = document.querySelector('#record');
+itsRecording.addEventListener('change', () => {
+	if (itsRecording.checked) recording.isrecording = true;
+});
+
+let records = [];
+
+let recording = {
+	isrecording: false,
+	channel: 1,
 };
 
-const audio = new Audio('./sounds/hihat.wav');
-
-function onKeyPress(ev) {
-	// logika mapowania key -> sound
-	const sound = KeyToSound[ev.key];
-	switch (ev.key) {
-		case 'a':
-			sound = SOUND.clap;
-
-			// clap
-			break;
-		case 's':
-			sound = SOUND.hihat;
-			// hihat
-			break;
+function onKeyPress(event) {
+	const key = event.key;
+	let sound = '';
+	switch (key) {
 		case 'd':
-			sound = SOUND.kick;
-			// kick
-			break;
-		case 'f':
-			sound = SOUND.openhat;
-			// openhat
-			break;
-		case 'g':
-			sound = SOUND.ride;
-			// ride
-			break;
-		case 'h':
-			sound = SOUND.snare;
-			// snare
-			break;
-		case 'j':
-			sound = SOUND.tink;
-			// tink
+			sound = 'boom';
+			document.querySelector('#d').classList.add('keyPressed');
+			setTimeout(() => {
+				document.querySelector('#d').classList.remove('keyPressed');
+			}, 100);
 			break;
 		case 'k':
-			sound = SOUND.tom;
-			// tom
+			sound = 'tom';
+			document.querySelector('#k').classList.add('keyPressed');
+			setTimeout(() => {
+				document.querySelector('#k').classList.remove('keyPressed');
+			}, 100);
 			break;
+		case 's':
+			sound = 'hihat';
+			document.querySelector('#s').classList.add('keyPressed');
+			setTimeout(() => {
+				document.querySelector('#s').classList.remove('keyPressed');
+			}, 100);
+			break;
+		case 'f':
+			sound = 'kick';
+			document.querySelector('#f').classList.add('keyPressed');
+			setTimeout(() => {
+				document.querySelector('#f').classList.remove('keyPressed');
+			}, 100);
+			break;
+		case 'g':
+			sound = 'openhat';
+			document.querySelector('#g').classList.add('keyPressed');
+			setTimeout(() => {
+				document.querySelector('#g').classList.remove('keyPressed');
+			}, 100);
+			break;
+		case 'a':
+			sound = 'ride';
+			document.querySelector('#a').classList.add('keyPressed');
+			setTimeout(() => {
+				document.querySelector('#a').classList.remove('keyPressed');
+			}, 100);
+			break;
+		case 'j':
+			sound = 'snare';
+			document.querySelector('#j').classList.add('keyPressed');
+			setTimeout(() => {
+				document.querySelector('#j').classList.remove('keyPressed');
+			}, 100);
+			break;
+		case 'h':
+			sound = 'tink';
+			document.querySelector('#h').classList.add('keyPressed');
+			setTimeout(() => {
+				document.querySelector('#h').classList.remove('keyPressed');
+			}, 100);
+			break;
+		default:
+			sound = 'default';
+			break;
+	}
+	startRecording(sound);
+}
+
+function startRecording(sound) {
+	console.log(recording);
+	if (recording.isrecording) {
+		var record = { soundName: sound, timestamp: Date.now() };
+		records.push(record);
 	}
 	playSound(sound);
 }
 
 function playSound(sound) {
-	if (!sound) {
-		return;
-	}
-	const audioTag = document.querySelector(`#${clap}`);
+	console.log(sound);
+	const audioTag = document.querySelector(`#${sound}`);
 	audioTag.currentTime = 0;
 	audioTag.play();
 }
-// Date.now()
 
-function Play(x) {
-	document.querySelector(x).classList.add('keyPressed');
-	audio.play();
-}
-
-function Stop(x) {
-	document.querySelector(x).classList.remove('keyPressed');
-}
-
-document.getElementById('d1').addEventListener('mousedown', function () {
-	document.querySelector('d1').classList.add('keyPressed');
-	audio.play();
+document.querySelector('#play').addEventListener('click', () => {
+	for (let i = 0; i < records.length; i++) {
+		setTimeout(() => {
+			playSound(records[i].soundName);
+		}, records[i].timestamp - records[0].timestamp);
+	}
 });
-document.getElementById('d1').addEventListener('mouseup', function () {
-	document.getElementById('d1').classList.remove('keyPressed');
+
+document.querySelector('#record').addEventListener('click', () => {
+	if (!document.querySelector('#play').checked) {
+		records = [];
+	} else {
+		recording = {
+			isrecording: true,
+			channel: 1,
+		};
+	}
 });
