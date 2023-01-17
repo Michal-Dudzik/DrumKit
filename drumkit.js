@@ -1,16 +1,15 @@
 document.addEventListener('keypress', onKeyPress);
 
-const itsRecording = document.querySelector('#record');
-itsRecording.addEventListener('change', () => {
-	if (itsRecording.checked) recording.isrecording = true;
-});
-
 let records = [];
+let isRecording = false;
+let record = [];
 
-let recording = {
-	isrecording: false,
-	channel: 1,
-};
+class Sound {
+	constructor(key) {
+		this.key = key;
+		this.timestamp = Date.now();
+	}
+}
 
 function onKeyPress(event) {
 	const key = event.key;
@@ -76,40 +75,49 @@ function onKeyPress(event) {
 			sound = 'default';
 			break;
 	}
-	startRecording(sound);
-}
-
-function startRecording(sound) {
-	console.log(recording);
-	if (recording.isrecording) {
-		var record = { soundName: sound, timestamp: Date.now() };
-		records.push(record);
-	}
+	if (isRecording) record.push(new Sound(sound));
 	playSound(sound);
 }
 
 function playSound(sound) {
-	console.log(sound);
 	const audioTag = document.querySelector(`#${sound}`);
 	audioTag.currentTime = 0;
 	audioTag.play();
 }
 
-document.querySelector('#play').addEventListener('click', () => {
-	for (let i = 0; i < records.length; i++) {
+function playRecord(record) {
+	record.forEach((sound) => {
 		setTimeout(() => {
-			playSound(records[i].soundName);
-		}, records[i].timestamp - records[0].timestamp);
-	}
-});
+			playSound(sound.key);
+		}, sound.timestamp - record[0].timestamp);
+	});
+}
 
-document.querySelector('#record').addEventListener('click', () => {
-	if (!document.querySelector('#play').checked) {
-		records = [];
-	} else {
-		recording = {
-			isrecording: true,
-			channel: 1,
-		};
+function showRecords() {
+	const recordsList = document.querySelector('.records');
+	recordsList.innerHTML = '';
+	records.forEach((record, index) => {
+		const li = document.createElement('li');
+		li.classList.add('records');
+		li.textContent = `Record ${index + 1}`;
+		li.addEventListener('click', () => {
+			if (isRecording) {
+				alert("You can't play while recording");
+			} else {
+				playRecord(record);
+			}
+		});
+		recordsList.appendChild(li);
+	});
+}
+
+const itsRecording = document.querySelector('#record');
+itsRecording.addEventListener('change', () => {
+	if (itsRecording.checked) isRecording = true;
+	else {
+		isRecording = false;
+		records.push(record);
+		record = [];
+		showRecords();
 	}
 });
